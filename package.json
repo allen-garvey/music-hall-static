@@ -1,0 +1,26 @@
+{
+  "name": "music-hall-static",
+  "version": "1.0.0",
+  "description": "Web app to explore an artist's albums and music tracks. [Based on](https://github.com/allen-garvey/music-hall), but without the requirement on Vue or node.",
+  "homepage": "https://github.com/allen-garvey/music-hall-static#readme",
+  "bugs": {
+    "url": "https://github.com/allen-garvey/music-hall-static/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allen-garvey/music-hall-static.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "bun src/index.tsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  }
+}
