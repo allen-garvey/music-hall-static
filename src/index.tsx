@@ -13,7 +13,10 @@ const server = Bun.serve({
                 join(import.meta.dirname, '/static/index.html')
             ).text();
             return new Response(
-                indexHtml.replace('{{react_output}}', renderToString(<Page />)),
+                indexHtml.replace(
+                    '{{react_output}}',
+                    renderToString(<Page homeUrl="https://allengarvey.com" />)
+                ),
                 {
                     headers: { 'Content-Type': 'text/html' },
                 }

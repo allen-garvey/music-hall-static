@@ -1,0 +1,12 @@
+.page_container {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+.page_title {
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+}
+.page_description {
+    padding: 0 1rem;
+    margin: 0 0 2rem;
+}
