@@ -1,10 +1,10 @@
-.album_header__container {
+.container {
     margin-bottom: 1.5rem;
     max-width: 784px;
 
     --cover-image-width: 220px;
 }
-.album_header__albumCoverOverlay {
+.albumCoverOverlay {
     display: none;
     position: absolute;
     top: 0;
@@ -16,17 +16,17 @@
     opacity: 0.7;
     mix-blend-mode: screen;
 }
-.album_header__imageContainer {
+.imageContainer {
     position: relative;
     margin-left: 1rem;
 
     &:hover {
-        .album_header__albumCoverOverlay {
+        .albumCoverOverlay {
             display: block;
         }
     }
 }
-.album_header__table {
+.table {
     padding: 0 1rem;
     width: 100%;
 
@@ -34,17 +34,17 @@
         height: 1em;
     }
 }
-.album_header__secondaryInfo {
+.secondaryInfo {
     opacity: 0.5;
     padding-left: 2.5rem;
     text-align: right;
 }
-.album_header__coverImage {
+.coverImage {
     display: inline-block;
     width: var(--cover-image-width);
     height: var(--cover-image-width);
 }
-.album_header__description {
+.description {
     list-style-type: none;
     font-family: monospace;
     font-size: 0.8rem;
@@ -56,7 +56,7 @@
     }
 }
 
-.album_header__icon {
+.icon {
     color: #000;
     opacity: 0.35;
     cursor: pointer;
@@ -65,7 +65,7 @@
         opacity: 1;
     }
 }
-.album_header__shareLink {
+.shareLink {
     display: block;
     width: 100%;
     text-align: right;
@@ -77,21 +77,21 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    .album_header__icon {
+    .icon {
         color: #fff;
     }
 }
 
 @media screen and (min-width: 650px) {
-    .album_header__container {
+    .container {
         display: flex;
         flex-wrap: wrap;
     }
-    .album_header__infoContainer {
+    .infoContainer {
         flex-basis: calc(100% - var(--cover-image-width) - 1rem);
     }
 
-    .album_header__description {
+    .description {
         position: relative;
         top: -30px;
         padding-right: 30px;
@@ -99,7 +99,7 @@
 }
 
 @media screen and (max-width: 649px) {
-    .album_header__mobileHide {
+    .mobileHide {
         display: none;
     }
 }

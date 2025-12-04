@@ -2,6 +2,7 @@ import React from 'react';
 import type { Album } from '../models/tracks';
 import { yearDescriptionForAlbum } from '../view-helpers/album';
 import { albumTime } from '../view-helpers/time';
+import style from './album-header.module.css';
 
 const getDescriptionRows = (album: Album): string[] => {
     const descriptionMap: Map<string, string[]> = new Map();
@@ -36,52 +37,56 @@ export const AlbumHeader = ({ album }: Props) => {
     const descriptionRows = getDescriptionRows(album);
 
     return (
-        <div className="album_header__container">
-            <div className="album_header__imageContainer">
+        <div className={style.container}>
+            <div className={style.imageContainer}>
                 <img
                     src={`/media/images/${
                         album.meta.coverImage || album.meta.slug
                     }.webp`}
                     alt={`${album.meta.title} by ${album.meta.artist} album cover`}
-                    className="album_header__coverImage"
+                    className={style.coverImage}
                     loading="lazy"
                 />
-                <div className="album_header__albumCoverOverlay">
+                <div className={style.albumCoverOverlay}>
                     <svg viewBox="0 0 24 24">
                         <use xlinkHref="#icon-pause" />
                         <use xlinkHref="#icon-play" />
                     </svg>
                 </div>
             </div>
-            <div className="album_header__infoContainer">
-                <table className="album_header__table">
+            <div className={style.infoContainer}>
+                <table className={style.table}>
                     <tbody>
                         <tr>
                             <td>
                                 <h3>{album.meta.title}</h3>
                             </td>
-                            <td className="album_header__secondaryInfo album_header__mobileHide">
+                            <td
+                                className={`${style.secondaryInfo} ${style.mobileHide}`}
+                            >
                                 {yearDescriptionForAlbum(album)}
                             </td>
                         </tr>
                         <tr>
                             <td>{album.meta.artist}</td>
-                            <td className="album_header__secondaryInfo album_header__mobileHide">
+                            <td
+                                className={`${style.secondaryInfo} ${style.mobileHide}`}
+                            >
                                 {albumTime(album.tracks)}
                             </td>
                         </tr>
-                        <tr className="album_header__mobileHide">
+                        <tr className={style.mobileHide}>
                             <td></td>
-                            <td className="album_header__secondaryInfo">
+                            <td className={style.secondaryInfo}>
                                 {album.meta.tags.join(', ')}
                             </td>
                         </tr>
-                        <tr className="album_header__mobileHide">
+                        <tr className={style.mobileHide}>
                             <td></td>
                             <td>
-                                <a className="album_header__shareLink">
+                                <a className={style.shareLink}>
                                     <svg
-                                        className="album_header__icon"
+                                        className={style.icon}
                                         viewBox="0 0 24 24"
                                     >
                                         <use xlinkHref="#icon-share" />
@@ -91,7 +96,7 @@ export const AlbumHeader = ({ album }: Props) => {
                         </tr>
                         <tr>
                             <td colSpan="2">
-                                <ul className="album_header__description">
+                                <ul className={style.description}>
                                     {descriptionRows.map(row => (
                                         <li key={row}>{row}</li>
                                     ))}

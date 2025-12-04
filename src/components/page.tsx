@@ -2,6 +2,8 @@ import React from 'react';
 import type { Album } from '../models/tracks';
 import { AlbumComponent } from './album';
 
+import style from './page.module.css';
+
 interface Props {
     homeUrl: string;
     albums: Album[];
@@ -9,11 +11,11 @@ interface Props {
 
 export const Page = ({ homeUrl, albums }: Props) => {
     return (
-        <div className="page_container">
-            <h1 className="page_title">
+        <div className={style.container}>
+            <h1 className={style.title}>
                 <a href={homeUrl}>Allen Garvey</a>
             </h1>
-            <p className="page_description">
+            <p className={style.description}>
                 Selected musical compositions and recordings
             </p>
             {albums.map(album => (

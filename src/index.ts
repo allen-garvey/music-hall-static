@@ -1,36 +1,12 @@
-import { join } from 'node:path';
+import html from './static/index.html';
 
 const server = Bun.serve({
     port: 3000,
+    development: {
+        hmr: false,
+    },
     routes: {
-        '/': req => {
-            return new Response(
-                Bun.file(join(import.meta.dirname, '/static/index.html')),
-                {
-                    headers: { 'Content-Type': 'text/html' },
-                }
-            );
-        },
-        '/app.js': async req => {
-            const build = await Bun.build({
-                entrypoints: [
-                    join(import.meta.dirname, 'components/index.tsx'),
-                ],
-            });
-
-            return new Response(build.outputs[0], {
-                headers: { 'Content-Type': 'application/javascript' },
-            });
-        },
-        '/style.css': async req => {
-            const build = await Bun.build({
-                entrypoints: [join(import.meta.dirname, 'static/index.css')],
-            });
-
-            return new Response(build.outputs[0], {
-                headers: { 'Content-Type': 'text/css' },
-            });
-        },
+        '/': html,
     },
 });
 
