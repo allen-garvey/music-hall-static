@@ -1,0 +1,104 @@
+.album_header__container {
+    margin-bottom: 1.5rem;
+    max-width: 784px;
+
+    --cover-image-width: 220px;
+}
+.album_header__albumCoverOverlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    color: #dedede;
+    opacity: 0.7;
+    mix-blend-mode: screen;
+}
+.album_header__imageContainer {
+    position: relative;
+    margin-left: 1rem;
+
+    &:hover {
+        .album_header__albumCoverOverlay {
+            display: block;
+        }
+    }
+}
+.album_header__table {
+    padding: 0 1rem;
+    width: 100%;
+
+    td {
+        height: 1em;
+    }
+}
+.album_header__secondaryInfo {
+    opacity: 0.5;
+    padding-left: 2.5rem;
+    text-align: right;
+}
+.album_header__coverImage {
+    width: var(--cover-image-width);
+    height: var(--cover-image-width);
+}
+.album_header__description {
+    list-style-type: none;
+    font-family: monospace;
+    font-size: 0.8rem;
+    padding: 0 0 1em;
+    margin: 0;
+
+    li {
+        min-height: 1em; /* for empty rows for spacing purposes */
+    }
+}
+
+.album_header__icon {
+    color: #000;
+    opacity: 0.35;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+.album_header__shareLink {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: 0.5em 0 0;
+
+    svg {
+        width: 22px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .album_header__icon {
+        color: #fff;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .album_header__container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .album_header__infoContainer {
+        flex-basis: calc(100% - var(--cover-image-width) - 1rem);
+    }
+
+    .album_header__description {
+        position: relative;
+        top: -30px;
+        padding-right: 30px;
+    }
+}
+
+@media screen and (max-width: 649px) {
+    .album_header__mobileHide {
+        display: none;
+    }
+}

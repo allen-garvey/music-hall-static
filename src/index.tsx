@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server';
 import React from 'react';
 
 import { Page } from './components/page.tsx';
+import { albums } from './models/tracks.ts';
 
 const server = Bun.serve({
     port: 3000,
@@ -15,7 +16,12 @@ const server = Bun.serve({
             return new Response(
                 indexHtml.replace(
                     '{{react_output}}',
-                    renderToString(<Page homeUrl="https://allengarvey.com" />)
+                    renderToString(
+                        <Page
+                            homeUrl="https://allengarvey.com"
+                            albums={albums}
+                        />
+                    )
                 ),
                 {
                     headers: { 'Content-Type': 'text/html' },
