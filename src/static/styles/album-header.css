@@ -56,10 +56,6 @@
     }
 }
 
-.album_header__iconPause {
-    display: none;
-}
-
 .album_header__icon {
     color: #000;
     opacity: 0.35;

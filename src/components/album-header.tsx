@@ -48,14 +48,8 @@ export const AlbumHeader = ({ album }: Props) => {
                 />
                 <div className="album_header__albumCoverOverlay">
                     <svg viewBox="0 0 24 24">
-                        <use
-                            xlinkHref="#icon-pause"
-                            className="album_header__iconPause"
-                        />
-                        <use
-                            xlinkHref="#icon-play"
-                            className="album_header__iconPlay"
-                        />
+                        <use xlinkHref="#icon-pause" />
+                        <use xlinkHref="#icon-play" />
                     </svg>
                 </div>
             </div>
