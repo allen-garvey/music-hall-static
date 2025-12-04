@@ -40,5 +40,7 @@ Thumbs.db
 # Elixir phoenix dialyzer
 .elixir_ls/*
 
-public/*
+public/*.html
+public/*.css
+public/*.js
 bin/*

@@ -1,3 +1,4 @@
+import { join } from 'node:path';
 import html from './static/index.html';
 
 const server = Bun.serve({
@@ -7,6 +8,20 @@ const server = Bun.serve({
     },
     routes: {
         '/': html,
+        '/media/images/:filename': req => {
+            return new Response(
+                Bun.file(
+                    join(
+                        import.meta.dirname,
+                        '../public/media/images',
+                        req.params.filename
+                    )
+                ),
+                {
+                    headers: { 'Content-Type': 'image/webp' },
+                }
+            );
+        },
     },
 });
 
