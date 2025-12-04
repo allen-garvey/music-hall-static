@@ -19,6 +19,15 @@ const server = Bun.serve({
                 }
             );
         },
+        '/style.css': async req => {
+            const build = await Bun.build({
+                entrypoints: [join(import.meta.dirname, '/static/index.css')],
+            });
+
+            return new Response(build.outputs[0], {
+                headers: { 'Content-Type': 'text/css' },
+            });
+        },
     },
 });
 
