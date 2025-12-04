@@ -1,0 +1,74 @@
+.trackRow {
+    --icon-controls-dimensions: 40px;
+
+    td {
+        padding: 0.75em 0.25em;
+    }
+
+    &:hover, &:focus, &:focus-within {
+        background-color: #bdeeff;
+        .trackButton, .shareLink {
+            visibility: visible;
+        }
+        .trackNumber {
+            display: none;
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .trackRow {
+        &:hover, &:focus, &:focus-within {
+            color: #000;
+            background-color: #cee6ff;
+        }
+    }
+}
+
+.iconContainer {
+    display: inline-block;
+    position: relative;
+    height: var(--icon-controls-dimensions);
+    width: var(--icon-controls-dimensions);
+}
+.trackButton {
+    visibility: hidden;
+}
+.trackNumber {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.25;
+}
+.icon {
+    color: #000;
+    opacity: 0.35;
+    cursor: pointer;
+    
+    &:hover {
+        opacity: 1;
+    }
+}
+.shareLink {
+    display: block;
+    visibility: hidden;
+    padding-right: 12px;
+}
+.playIcon {
+    max-height: 100%;
+    width: var(--icon-controls-dimensions);
+}
+
+@media (hover: none) {
+    .trackNumber {
+        display: none;
+    }
+    .trackButton {
+        visibility: visible;
+    }
+}

@@ -1,0 +1,26 @@
+.overallTrackContainer {
+    & + & {
+        margin-top: 5rem;
+    }
+}
+.table {
+    border-collapse: collapse;
+    th {
+        text-align: left;
+    }
+}
+.playButtonColumn {
+    width: 60px;
+}
+.titleColumn {
+    width: 35em;
+}
+.timeColumn {
+    width: 6em;
+}
+.yearColumn {
+    width: 4em;
+}
+.shareColumn {
+    width: 40px;
+}

@@ -19,7 +19,11 @@ export const Page = ({ homeUrl, albums }: Props) => {
                 Selected musical compositions and recordings
             </p>
             {albums.map(album => (
-                <AlbumComponent album={album} key={album.meta.title} />
+                <AlbumComponent
+                    album={album}
+                    isPlaying={false}
+                    key={album.meta.title}
+                />
             ))}
         </div>
     );

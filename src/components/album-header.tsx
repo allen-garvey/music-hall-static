@@ -31,9 +31,10 @@ const getDescriptionRows = (album: Album): string[] => {
 
 interface Props {
     album: Album;
+    isPlaying: boolean;
 }
 
-export const AlbumHeader = ({ album }: Props) => {
+export const AlbumHeader = ({ album, isPlaying }: Props) => {
     const descriptionRows = getDescriptionRows(album);
 
     return (
@@ -49,8 +50,9 @@ export const AlbumHeader = ({ album }: Props) => {
                 />
                 <div className={style.albumCoverOverlay}>
                     <svg viewBox="0 0 24 24">
-                        <use xlinkHref="#icon-pause" />
-                        <use xlinkHref="#icon-play" />
+                        <use
+                            xlinkHref={isPlaying ? '#icon-pause' : '#icon-play'}
+                        />
                     </svg>
                 </div>
             </div>
