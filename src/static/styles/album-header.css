@@ -40,6 +40,7 @@
     text-align: right;
 }
 .album_header__coverImage {
+    display: inline-block;
     width: var(--cover-image-width);
     height: var(--cover-image-width);
 }
