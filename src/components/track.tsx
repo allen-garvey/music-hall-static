@@ -7,15 +7,22 @@ interface Props {
     track: Track;
     isPlaying: boolean;
     trackIndex: number;
+    onTrackPlayRequested: () => void;
 }
 
-export const TrackComponent = ({ track, isPlaying, trackIndex }: Props) => {
+export const TrackComponent = ({
+    track,
+    isPlaying,
+    trackIndex,
+    onTrackPlayRequested,
+}: Props) => {
     return (
         <tr className={style.trackRow}>
             <td className={style.iconContainer} tabIndex={0}>
                 <button
                     title={isPlaying ? 'Pause' : 'Play'}
                     className={style.trackButton}
+                    onClick={onTrackPlayRequested}
                 >
                     <svg
                         className={`${style.icon} ${style.playIcon}`}

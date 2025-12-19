@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { formatSeconds } from '../view-helpers/time';
 import type { Track } from '../models/tracks';
 import type { PlayState } from '../models/play-state';
@@ -9,7 +9,7 @@ const getVolumeIcon = (audioVolume: number): string => {
         return '#icon-volume-x';
     }
     if (audioVolume <= 0.6) {
-        return 'icon-volume-2';
+        return '#icon-volume-1';
     }
     return '#icon-volume-2';
 };
@@ -33,11 +33,11 @@ export const MediaControls = ({
     buttonClicked,
     playState,
 }: Props) => {
-    const [trackSeekTimeout, setTrackSeekTimeout] = useState<number | null>(
-        null
-    );
+    const [trackSeekTimeout, setTrackSeekTimeout] = useState<
+        number | undefined
+    >(undefined);
 
-    const progressBarUpdated = (e: Event) => {
+    const progressBarUpdated = (e: FormEvent) => {
         clearTimeout(trackSeekTimeout);
         const time = parseInt((e.target as HTMLInputElement).value);
         setTrackSeekTimeout(
@@ -58,12 +58,16 @@ export const MediaControls = ({
                     max={currentTrack.length}
                     step="1"
                     value={elapsedTime}
-                    input={progressBarUpdated}
+                    onInput={progressBarUpdated}
                 />
             </div>
             <div className={style.innerContainer}>
                 <div className={style.titleContainer}>
-                    <span>{currentTrack.title}</span>
+                    <span>
+                        {playState === 'IS_LOADING'
+                            ? 'Loading…'
+                            : currentTrack.title}
+                    </span>
                     <span>
                         {formatSeconds(elapsedTime)} -
                         {formatSeconds(currentTrack.length)}
@@ -72,7 +76,7 @@ export const MediaControls = ({
                 <div className={style.controlsContainer}>
                     {hasAudio ? (
                         <div className={style.buttonContainer}>
-                            <button onClick={buttonClicked} tabindex="1">
+                            <button onClick={buttonClicked} tabIndex={1}>
                                 <svg className={style.icon} viewBox="0 0 24 24">
                                     <use
                                         xlinkHref={
@@ -97,14 +101,14 @@ export const MediaControls = ({
                                 <use xlinkHref={getVolumeIcon(audioVolume)} />
                             </svg>
                             <input
-                                tabindex="2"
+                                tabIndex={2}
                                 type="range"
                                 min="0"
                                 max="1"
                                 value={audioVolume}
                                 step="0.05"
                                 className={style.volumeInput}
-                                input={$event =>
+                                onInput={$event =>
                                     volumeChanged(
                                         parseFloat(
                                             ($event.target as HTMLInputElement)

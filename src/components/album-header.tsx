@@ -32,9 +32,14 @@ const getDescriptionRows = (album: Album): string[] => {
 interface Props {
     album: Album;
     isPlaying: boolean;
+    onPlayButtonClicked: () => void;
 }
 
-export const AlbumHeader = ({ album, isPlaying }: Props) => {
+export const AlbumHeader = ({
+    album,
+    isPlaying,
+    onPlayButtonClicked,
+}: Props) => {
     const descriptionRows = getDescriptionRows(album);
 
     return (
@@ -48,7 +53,10 @@ export const AlbumHeader = ({ album, isPlaying }: Props) => {
                     className={style.coverImage}
                     loading="lazy"
                 />
-                <div className={style.albumCoverOverlay}>
+                <div
+                    className={style.albumCoverOverlay}
+                    onClick={onPlayButtonClicked}
+                >
                     <svg viewBox="0 0 24 24">
                         <use
                             xlinkHref={isPlaying ? '#icon-pause' : '#icon-play'}
