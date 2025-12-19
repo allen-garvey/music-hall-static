@@ -12,7 +12,7 @@ interface Props {
 export const TrackComponent = ({ track, isPlaying, trackIndex }: Props) => {
     return (
         <tr className={style.trackRow}>
-            <td className={style.iconContainer} tabIndex="0">
+            <td className={style.iconContainer} tabIndex={0}>
                 <button
                     title={isPlaying ? 'Pause' : 'Play'}
                     className={style.trackButton}

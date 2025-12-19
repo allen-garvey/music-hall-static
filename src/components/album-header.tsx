@@ -97,7 +97,7 @@ export const AlbumHeader = ({ album, isPlaying }: Props) => {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="2">
+                            <td colSpan={2}>
                                 <ul className={style.description}>
                                     {descriptionRows.map(row => (
                                         <li key={row}>{row}</li>
