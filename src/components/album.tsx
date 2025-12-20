@@ -7,8 +7,8 @@ import style from './album.module.css';
 interface Props {
     album: Album;
     isPlaying: boolean;
-    currentTrack: Track | null;
-    onTrackPlayRequested: (track: Track) => void;
+    currentTrack: Track | undefined;
+    onTrackPlayRequested: (trackIndex: number) => void;
     onAlbumPlayRequested: () => void;
 }
 
@@ -47,7 +47,7 @@ export const AlbumComponent = ({
                             trackIndex={i}
                             key={`${album.meta.title}-${track.filename}-${track.title}`}
                             onTrackPlayRequested={() => {
-                                onTrackPlayRequested(track);
+                                onTrackPlayRequested(i);
                             }}
                         />
                     ))}
