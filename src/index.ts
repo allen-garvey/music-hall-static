@@ -22,6 +22,21 @@ const server = Bun.serve({
                 }
             );
         },
+        '/media/music/:directory/:filename': req => {
+            return new Response(
+                Bun.file(
+                    join(
+                        import.meta.dirname,
+                        '../public/media/music',
+                        req.params.directory,
+                        req.params.filename
+                    )
+                ),
+                {
+                    headers: { 'Content-Type': 'audio/opus' },
+                }
+            );
+        },
     },
 });
 
