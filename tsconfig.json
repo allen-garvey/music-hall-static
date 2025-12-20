@@ -4,6 +4,7 @@
             "DOM",
             "ES2024"
         ],
+        "types": [],
         "jsx": "react",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true
