@@ -4,7 +4,10 @@
             "DOM",
             "ES2024"
         ],
-        "types": [],
+        "types": [
+            "bun"
+        ],
+        "module": "es2022",
         "jsx": "react",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true
