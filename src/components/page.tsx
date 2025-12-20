@@ -4,6 +4,7 @@ import type { PlayState } from '../models/play-state';
 import { AlbumComponent } from './album';
 import { MediaControls } from './media-controls';
 import { getUserVolume, saveUserVolume } from '../models/user-settings';
+import { mediaUrlForTrack } from '../models/audio-helpers';
 
 import style from './page.module.css';
 
@@ -13,13 +14,12 @@ interface Props {
 }
 
 export const Page = ({ homeUrl, albums }: Props) => {
+    const audio = useRef(new Audio());
     const [playState, setPlayState] = useState<PlayState>('IS_EMPTY');
     const [elapsedTime, setElapsedTime] = useState(0);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(-1);
     const [currentAlbumIndex, setCurrentAlbumIndex] = useState(-1);
     const [audioVolume, setAudioVolume] = useState(getUserVolume());
-    const [canPlayOpus, setCanPlayOpus] = useState(true);
-    const audio = useRef(new Audio());
     const currentAlbum: Album | undefined = albums[currentAlbumIndex];
     const currentTrack: Track | undefined =
         currentAlbum?.tracks[currentTrackIndex];
@@ -34,9 +34,9 @@ export const Page = ({ homeUrl, albums }: Props) => {
                 currentAlbum &&
                 currentTrackIndex < currentAlbum.tracks.length - 1
             ) {
-                setCurrentTrackIndex(currentTrackIndex + 1);
-                //TODO start audio function
-                // this.startAudio();
+                const nextTrackIndex = currentAlbumIndex + 1;
+                setCurrentTrackIndex(nextTrackIndex);
+                startAudio(currentAlbumIndex, nextTrackIndex);
             } else {
                 setPlayState('IS_PAUSED');
             }
@@ -44,45 +44,68 @@ export const Page = ({ homeUrl, albums }: Props) => {
         audio.current.addEventListener('timeupdate', e => {
             setElapsedTime(Math.floor(audio.current.currentTime));
         });
-        setCanPlayOpus(audio.current.canPlayType('audio/ogg') !== '');
     }, []);
 
-    const onTrackSeekRequested = (time: number) => {};
+    const startAudio = (albumIndex: number, trackIndex: number) => {
+        const currentTrack = albums[albumIndex].tracks[trackIndex];
+        const audioCurrent = audio.current;
+
+        audioCurrent.src = mediaUrlForTrack(
+            currentTrack,
+            audioCurrent.canPlayType('audio/ogg') !== ''
+        );
+        setPlayState('IS_LOADING');
+        setElapsedTime(0);
+        audioCurrent.load();
+        audioCurrent.play();
+    };
+
+    const stopAudio = () => {
+        setPlayState('IS_PAUSED');
+        audio.current.pause();
+    };
+
+    const restartAudio = () => {
+        setPlayState('IS_PLAYING');
+        audio.current.play();
+    };
+
+    const onTrackSeekRequested = (time: number) => {
+        audio.current.currentTime = time;
+    };
     const volumeChanged = (volume: number) => {
         setAudioVolume(volume);
         saveUserVolume(volume);
     };
-    const onButtonClicked = () => {};
+    const onMainMediaControlsButtonClicked = () => {
+        if (playState === 'IS_PAUSED') {
+            restartAudio();
+        } else {
+            stopAudio();
+        }
+    };
 
     const albumPlayButtonClicked = (albumIndex: number) => {
-        if (!currentAlbum || currentAlbumIndex === albumIndex) {
+        if (!currentAlbum || currentAlbumIndex !== albumIndex) {
             setCurrentAlbumIndex(albumIndex);
             setCurrentTrackIndex(0);
-            setPlayState('IS_LOADING');
+            startAudio(albumIndex, 0);
         } else {
-            if (playState === 'IS_PAUSED') {
-                setPlayState('IS_PLAYING');
-            } else {
-                setPlayState('IS_PAUSED');
-            }
+            onMainMediaControlsButtonClicked();
         }
     };
 
     const trackPlayButtonClicked = (trackIndex: number, albumIndex: number) => {
         if (
             !currentTrack ||
-            currentAlbumIndex === albumIndex ||
+            currentAlbumIndex !== albumIndex ||
             trackIndex !== currentTrackIndex
         ) {
             setCurrentTrackIndex(trackIndex);
             setCurrentAlbumIndex(albumIndex);
-            setPlayState('IS_LOADING');
+            startAudio(albumIndex, trackIndex);
         } else {
-            if (playState === 'IS_PAUSED') {
-                setPlayState('IS_PLAYING');
-            } else {
-                setPlayState('IS_PAUSED');
-            }
+            onMainMediaControlsButtonClicked();
         }
     };
 
@@ -116,7 +139,7 @@ export const Page = ({ homeUrl, albums }: Props) => {
                     audioVolume={audioVolume}
                     onTrackSeekRequested={onTrackSeekRequested}
                     volumeChanged={volumeChanged}
-                    buttonClicked={onButtonClicked}
+                    buttonClicked={onMainMediaControlsButtonClicked}
                     playState={playState}
                 />
             ) : null}
