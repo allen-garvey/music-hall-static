@@ -43,4 +43,6 @@ Thumbs.db
 public/*.html
 public/*.css
 public/*.js
+public/media/music
+public/media/music/*
 bin/*
