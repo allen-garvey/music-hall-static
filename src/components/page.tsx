@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import type { Album, Track } from '../models/tracks';
 import type { PlayState } from '../models/play-state';
 import { AlbumComponent } from './album';
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const Page = ({ homeUrl, albums }: Props) => {
-    const audio = useRef(new Audio());
+    const audio = useRef<HTMLAudioElement>(null);
     const [playState, setPlayState] = useState<PlayState>('IS_EMPTY');
     const [elapsedTime, setElapsedTime] = useState(0);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(-1);
@@ -23,28 +23,6 @@ export const Page = ({ homeUrl, albums }: Props) => {
     const currentAlbum: Album | undefined = albums[currentAlbumIndex];
     const currentTrack: Track | undefined =
         currentAlbum?.tracks[currentTrackIndex];
-
-    useEffect(() => {
-        audio.current.addEventListener('loadeddata', () => {
-            setPlayState('IS_PLAYING');
-            audio.current.volume = audioVolume;
-        });
-        audio.current.addEventListener('ended', () => {
-            if (
-                currentAlbum &&
-                currentTrackIndex < currentAlbum.tracks.length - 1
-            ) {
-                const nextTrackIndex = currentAlbumIndex + 1;
-                setCurrentTrackIndex(nextTrackIndex);
-                startAudio(currentAlbumIndex, nextTrackIndex);
-            } else {
-                setPlayState('IS_PAUSED');
-            }
-        });
-        audio.current.addEventListener('timeupdate', e => {
-            setElapsedTime(Math.floor(audio.current.currentTime));
-        });
-    }, []);
 
     const startAudio = (albumIndex: number, trackIndex: number) => {
         const currentTrack = albums[albumIndex].tracks[trackIndex];
@@ -143,6 +121,28 @@ export const Page = ({ homeUrl, albums }: Props) => {
                     playState={playState}
                 />
             ) : null}
+            <audio
+                ref={audio}
+                onLoadedData={() => {
+                    setPlayState('IS_PLAYING');
+                    audio.current.volume = audioVolume;
+                }}
+                onEnded={() => {
+                    if (
+                        currentAlbum &&
+                        currentTrackIndex < currentAlbum.tracks.length - 1
+                    ) {
+                        const nextTrackIndex = currentTrackIndex + 1;
+                        setCurrentTrackIndex(nextTrackIndex);
+                        startAudio(currentAlbumIndex, nextTrackIndex);
+                    } else {
+                        setPlayState('IS_PAUSED');
+                    }
+                }}
+                onTimeUpdate={() => {
+                    setElapsedTime(Math.floor(audio.current.currentTime));
+                }}
+            />
         </div>
     );
 };
