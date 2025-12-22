@@ -94,7 +94,12 @@ export const AlbumHeader = ({
                         <tr className={style.mobileHide}>
                             <td></td>
                             <td>
-                                <a className={style.shareLink}>
+                                <a
+                                    className={style.shareLink}
+                                    href={`/?album=${encodeURIComponent(
+                                        album.meta.slug
+                                    )}`}
+                                >
                                     <svg
                                         className={style.icon}
                                         viewBox="0 0 24 24"

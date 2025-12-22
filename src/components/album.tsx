@@ -40,6 +40,7 @@ export const AlbumComponent = ({
                     {album.tracks.map((track, i) => (
                         <TrackComponent
                             track={track}
+                            albumSlug={album.meta.slug}
                             isPlaying={
                                 isPlaying &&
                                 currentTrack?.filename === track.filename

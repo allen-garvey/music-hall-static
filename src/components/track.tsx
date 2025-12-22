@@ -5,6 +5,7 @@ import style from './track.module.css';
 
 interface Props {
     track: Track;
+    albumSlug: string;
     isPlaying: boolean;
     trackIndex: number;
     onTrackPlayRequested: () => void;
@@ -12,6 +13,7 @@ interface Props {
 
 export const TrackComponent = ({
     track,
+    albumSlug,
     isPlaying,
     trackIndex,
     onTrackPlayRequested,
@@ -39,7 +41,12 @@ export const TrackComponent = ({
             <td>{formatSeconds(track.length)}</td>
             <td>{track.year}</td>
             <td>
-                <a className={style.shareLink}>
+                <a
+                    className={style.shareLink}
+                    href={`?album=${encodeURIComponent(
+                        albumSlug
+                    )}&track=${encodeURIComponent(track.filename)}`}
+                >
                     <svg className={style.icon} viewBox="0 0 24 24">
                         <use xlinkHref="#icon-share" />
                     </svg>
