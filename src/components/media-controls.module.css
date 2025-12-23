@@ -91,48 +91,7 @@
 }
 
 .volumeInput {
-    --volume-slider-handle-color: #6b6b6b;
-    --volume-slider-handle-dimensions: 15px;
-    --volume-slider-handle-border-radius: 50%;
-    --volume-slider-progress-color: #88c341;
-    --volume-slider-range-color: #dbd9d6;
-    
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    background: var(--volume-slider-range-color);
-    border: 1px solid #82887a;
-    border-radius: var(--volume-slider-handle-dimensions);
-    height: calc(var(--volume-slider-handle-dimensions) - 1px);
+    accent-color: #88c341;
     width: 140px;
-    overflow: hidden;
-
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-
-        width: var(--volume-slider-handle-dimensions);
-        height: var(--volume-slider-handle-dimensions);
-        border-radius: var(--volume-slider-handle-border-radius);
-        background: var(--volume-slider-handle-color);
-
-        box-shadow: -80px 0 0 75px var(--volume-slider-progress-color);
-    }
-
-    &::-moz-range-thumb {
-        width: var(--volume-slider-handle-dimensions);
-        height: var(--volume-slider-handle-dimensions);
-        border-radius: var(--volume-slider-handle-border-radius);
-        background: var(--volume-slider-handle-color)
-    }
-
-    &::-moz-range-progress {
-        height: 100%;
-        background-color: var(--volume-slider-progress-color);
-    }
-
-    &::-moz-range-track {
-        height: 100%;
-        background-color: var(--volume-slider-range-color);
-    }
+    cursor: pointer;
 }
