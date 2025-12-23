@@ -45,7 +45,7 @@ export const TrackComponent = ({
                     className={style.shareLink}
                     href={`?album=${encodeURIComponent(
                         albumSlug
-                    )}&track=${encodeURIComponent(track.filename)}`}
+                    )}&track=${encodeURIComponent(track.slug)}`}
                 >
                     <svg className={style.icon} viewBox="0 0 24 24">
                         <use xlinkHref="#icon-share" />

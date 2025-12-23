@@ -25,6 +25,7 @@ export interface Track {
     year: number;
     length: number; // length in seconds, rounded down to the nearest second
     filename: string;
+    slug: string;
     description?: string;
     isMp3?: boolean;
 }
@@ -57,6 +58,7 @@ export const albums: Album[] = [
                 // completion_date: '2023-11-06',
                 year: 2023,
                 filename: 'rise-and-fall/thoughts-of-canada',
+                slug: 'thoughts-of-canada',
                 length: 184,
             },
             {
@@ -64,6 +66,7 @@ export const albums: Album[] = [
                 // completion_date: '2020-06-25',
                 year: 2020,
                 filename: 'rise-and-fall/adieu',
+                slug: 'adieu',
                 length: 101,
             },
             {
@@ -71,6 +74,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-07-02',
                 year: 2015,
                 filename: 'rise-and-fall/a-new-world',
+                slug: 'a-new-world',
                 length: 206,
             },
             {
@@ -78,6 +82,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-09-06',
                 year: 2022,
                 filename: 'rise-and-fall/stirrings-of-catharsis',
+                slug: 'stirrings-of-catharsis',
                 length: 130,
             },
             {
@@ -85,6 +90,7 @@ export const albums: Album[] = [
                 // completion_date: '2014-01-28',
                 year: 2014,
                 filename: 'rise-and-fall/the-last-battle',
+                slug: 'the-last-battle',
                 length: 334,
             },
             {
@@ -92,12 +98,14 @@ export const albums: Album[] = [
                 // completion_date: '2014-01-05',
                 year: 2014,
                 filename: 'rise-and-fall/marching-orders',
+                slug: 'marching-orders',
                 length: 224,
             },
             {
                 title: 'A Dance of Love and Death',
                 year: 2013,
                 filename: 'rise-and-fall/a-dance-of-love-and-death',
+                slug: 'a-dance-of-love-and-death',
                 length: 371,
             },
             {
@@ -105,6 +113,7 @@ export const albums: Album[] = [
                 // completion_date: '2025-02-20',
                 year: 2025,
                 filename: 'rise-and-fall/a-visit-to-the-barony',
+                slug: 'a-visit-to-the-barony',
                 length: 122,
             },
         ],
@@ -122,6 +131,7 @@ export const albums: Album[] = [
                 // completion_date: '2020-06-03',
                 year: 2020,
                 filename: 'swiss-army-band/world-of-dreams',
+                slug: 'world-of-dreams',
                 length: 263,
             },
             {
@@ -129,6 +139,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-11-19',
                 year: 2022,
                 filename: 'swiss-army-band/we-are-all-on-the-same-team',
+                slug: 'we-are-all-on-the-same-team',
                 length: 97,
             },
             {
@@ -136,6 +147,7 @@ export const albums: Album[] = [
                 // completion_date: '2023-01-30',
                 year: 2023,
                 filename: 'swiss-army-band/ataxite',
+                slug: 'ataxite',
                 length: 136,
             },
             {
@@ -143,6 +155,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-11-16',
                 year: 2014,
                 filename: 'swiss-army-band/like-so-many-grains-of-sand',
+                slug: 'like-so-many-grains-of-sand',
                 length: 230,
             },
         ],
@@ -160,6 +173,7 @@ export const albums: Album[] = [
                 // completion_date: '2025-01-29',
                 year: 2025,
                 filename: 'secondary-colors/night-in-the-arcade',
+                slug: 'night-in-the-arcade',
                 length: 146,
             },
             {
@@ -167,6 +181,7 @@ export const albums: Album[] = [
                 // completion_date: '2023-02-07',
                 year: 2023,
                 filename: 'secondary-colors/welcome-to-the-antechamber',
+                slug: 'welcome-to-the-antechamber',
                 length: 128,
             },
             {
@@ -174,6 +189,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-10-20',
                 year: 2022,
                 filename: 'secondary-colors/acid-confusion',
+                slug: 'acid-confusion',
                 length: 144,
             },
             {
@@ -181,30 +197,35 @@ export const albums: Album[] = [
                 // completion_date: '2022-04-04',
                 year: 2022,
                 filename: 'secondary-colors/out-of-sync-out-of-time',
+                slug: 'out-of-sync-out-of-time',
                 length: 85,
             },
             {
                 title: 'Retrograde Nostalgia',
                 year: 2021,
                 filename: 'secondary-colors/retrograde-nostalgia',
+                slug: 'retrograde-nostalgia',
                 length: 121,
             },
             {
                 title: 'Shattered Horizons',
                 year: 2021,
                 filename: 'secondary-colors/shattered-horizons',
+                slug: 'shattered-horizons',
                 length: 95,
             },
             {
                 title: 'Everything In Its Correct Box',
                 year: 2021,
                 filename: 'secondary-colors/everything-in-its-correct-box',
+                slug: 'everything-in-its-correct-box',
                 length: 108,
             },
             {
                 title: 'New City',
                 year: 2021,
                 filename: 'secondary-colors/new-city',
+                slug: 'new-city',
                 length: 165,
             },
             {
@@ -212,6 +233,7 @@ export const albums: Album[] = [
                 // completion_date: '2020-11-17',
                 year: 2020,
                 filename: 'secondary-colors/suburban-malaise',
+                slug: 'suburban-malaise',
                 length: 97,
             },
             {
@@ -219,6 +241,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-10-02',
                 year: 2020,
                 filename: 'secondary-colors/mechanized-emotion',
+                slug: 'mechanized-emotion',
                 length: 189,
             },
             {
@@ -226,6 +249,7 @@ export const albums: Album[] = [
                 // completion_date: '2020-11-18',
                 year: 2020,
                 filename: 'secondary-colors/woozy-dreamworld',
+                slug: 'woozy-dreamworld',
                 length: 104,
             },
             {
@@ -233,6 +257,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-09-22',
                 year: 2020,
                 filename: 'secondary-colors/dance-rock',
+                slug: 'dance-rock',
                 length: 116,
             },
             {
@@ -240,6 +265,7 @@ export const albums: Album[] = [
                 year: 2020,
                 // completion_date: '2020-07-11',
                 filename: 'secondary-colors/anxiety-jukebox',
+                slug: 'anxiety-jukebox',
                 length: 159,
             },
             {
@@ -247,6 +273,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-05-08',
                 year: 2022,
                 filename: 'secondary-colors/automate-the-trulioo-checks',
+                slug: 'automate-the-trulioo-checks',
                 length: 88,
             },
             {
@@ -254,6 +281,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-10-25',
                 year: 2014,
                 filename: 'secondary-colors/stranger-danger',
+                slug: 'stranger-danger',
                 length: 105,
             },
         ],
@@ -271,6 +299,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-11-02',
                 year: 2019,
                 filename: 'nightscapes-dreamscapes/psychic-cleansing',
+                slug: 'psychic-cleansing',
                 length: 79,
             },
             {
@@ -278,6 +307,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-09-12',
                 year: 2017,
                 filename: 'nightscapes-dreamscapes/paths-across-the-desert',
+                slug: 'paths-across-the-desert',
                 length: 150,
             },
             {
@@ -285,6 +315,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-10-03',
                 year: 2013,
                 filename: 'nightscapes-dreamscapes/tuesday-morning',
+                slug: 'tuesday-morning',
                 length: 281,
             },
             {
@@ -292,6 +323,7 @@ export const albums: Album[] = [
                 // completion_date: '2023-12-10',
                 year: 2023,
                 filename: 'nightscapes-dreamscapes/quest-for-solitude',
+                slug: 'quest-for-solitude',
                 length: 78,
             },
             {
@@ -299,6 +331,7 @@ export const albums: Album[] = [
                 // completion_date: '2021-03-20',
                 year: 2021,
                 filename: 'nightscapes-dreamscapes/crystal-remembrances',
+                slug: 'crystal-remembrances',
                 length: 100,
             },
             {
@@ -306,6 +339,7 @@ export const albums: Album[] = [
                 // completion_date: '2022-09-14',
                 year: 2019,
                 filename: 'nightscapes-dreamscapes/voices-in-the-dark',
+                slug: 'voices-in-the-dark',
                 length: 68,
             },
             {
@@ -313,6 +347,7 @@ export const albums: Album[] = [
                 // completion_date: '2020-07-02',
                 year: 2020,
                 filename: 'nightscapes-dreamscapes/sound-of-my-voice',
+                slug: 'sound-of-my-voice',
                 length: 156,
             },
             {
@@ -320,6 +355,7 @@ export const albums: Album[] = [
                 // completion_date: '2020-06-25',
                 year: 2019,
                 filename: 'nightscapes-dreamscapes/sunrise-interpolation',
+                slug: 'sunrise-interpolation',
                 length: 61,
             },
         ],
@@ -337,6 +373,7 @@ export const albums: Album[] = [
                 // completion_date: '2014-04-13',
                 year: 2014,
                 filename: 'primary-colors/invocation',
+                slug: 'invocation',
                 length: 130,
             },
             {
@@ -344,6 +381,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-09-02',
                 year: 2013,
                 filename: 'primary-colors/just-doin-what-i-do',
+                slug: 'just-doin-what-i-do',
                 length: 147,
             },
             {
@@ -351,6 +389,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-08-29',
                 year: 2013,
                 filename: 'primary-colors/trouble-in-the-urban-jungle',
+                slug: 'trouble-in-the-urban-jungle',
                 length: 135,
             },
             {
@@ -358,6 +397,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-09-08',
                 year: 2013,
                 filename: 'primary-colors/another-world',
+                slug: 'another-world',
                 length: 134,
             },
             {
@@ -365,6 +405,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-08-28',
                 year: 2013,
                 filename: 'primary-colors/race-against-time',
+                slug: 'race-against-time',
                 length: 170,
             },
             {
@@ -373,6 +414,7 @@ export const albums: Album[] = [
                 year: 2013,
                 filename:
                     'primary-colors/This%20Could%20Be%20The%20Start%20Of%20Something',
+                slug: 'this-could-be-the-start-of-something',
                 length: 238,
             },
             {
@@ -380,6 +422,7 @@ export const albums: Album[] = [
                 // completion_date: '2014-03-21',
                 year: 2014,
                 filename: 'primary-colors/laid-back-trance',
+                slug: 'laid-back-trance',
                 length: 276,
             },
             {
@@ -387,6 +430,7 @@ export const albums: Album[] = [
                 // completion_date: '2014-03-20',
                 year: 2014,
                 filename: 'primary-colors/porta-del-paradiso',
+                slug: 'porta-del-paradiso',
                 length: 297,
             },
             {
@@ -394,6 +438,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-10-25',
                 year: 2013,
                 filename: 'primary-colors/return-of-the-___',
+                slug: 'return-of-the',
                 length: 155,
             },
             {
@@ -401,6 +446,7 @@ export const albums: Album[] = [
                 // completion_date: '2014-01-03',
                 year: 2014,
                 filename: 'primary-colors/darksides',
+                slug: 'darksides',
                 length: 259,
             },
             {
@@ -408,6 +454,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-10-25',
                 year: 2013,
                 filename: 'primary-colors/By%20The%20Seashore',
+                slug: 'by-the-seashore',
                 length: 252,
             },
             {
@@ -416,6 +463,7 @@ export const albums: Album[] = [
                 year: 2014,
                 filename:
                     'primary-colors/Sometimes%20I%20Miss%20You%20So%20Much',
+                slug: 'sometimes-i-miss-you-so-much',
                 length: 256,
             },
             {
@@ -423,6 +471,7 @@ export const albums: Album[] = [
                 // completion_date: '2014-01-16',
                 year: 2014,
                 filename: 'primary-colors/after-the-storm',
+                slug: 'after-the-storm',
                 length: 305,
             },
             {
@@ -430,6 +479,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-10-25',
                 year: 2013,
                 filename: 'primary-colors/interstellar-funk',
+                slug: 'interstellar-funk',
                 length: 226,
             },
             {
@@ -437,6 +487,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-06-03',
                 year: 2013,
                 filename: 'primary-colors/all-that-glitters',
+                slug: 'all-that-glitters',
                 length: 128,
             },
             {
@@ -444,6 +495,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-06-03',
                 year: 2013,
                 filename: 'primary-colors/toys-in-the-attic',
+                slug: 'toys-in-the-attic',
                 length: 88,
             },
             {
@@ -451,6 +503,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-10-25',
                 year: 2013,
                 filename: 'primary-colors/looking-back-from-a-distance',
+                slug: 'looking-back-from-a-distance',
                 length: 152,
             },
             {
@@ -458,6 +511,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-06-10',
                 year: 2013,
                 filename: 'primary-colors/dream',
+                slug: 'dream',
                 length: 224,
             },
             {
@@ -465,6 +519,7 @@ export const albums: Album[] = [
                 // completion_date: '2014-01-01',
                 year: 2014,
                 filename: 'primary-colors/last-night',
+                slug: 'last-night',
                 length: 221,
             },
             {
@@ -472,6 +527,7 @@ export const albums: Album[] = [
                 // completion_date: '2013-12-21',
                 year: 2013,
                 filename: 'primary-colors/sunrise-on-the-moebius-strip',
+                slug: 'sunrise-on-the-moebius-strip',
                 length: 255,
             },
             {
@@ -479,6 +535,7 @@ export const albums: Album[] = [
                 // completion_date: '2014-03-18',
                 year: 2014,
                 filename: 'primary-colors/graduation',
+                slug: 'graduation',
                 length: 282,
             },
         ],
@@ -496,6 +553,7 @@ export const albums: Album[] = [
                 title: 'Sky Meditation',
                 year: 2009,
                 filename: 'senior-recital/Sky%20Meditation',
+                slug: 'sky-meditation',
                 length: 277,
                 description: 'Kathleen Vermaelen - flute',
             },
@@ -504,6 +562,7 @@ export const albums: Album[] = [
                 year: 2009,
                 filename:
                     'senior-recital/Prelude%20to%20the%20Rest%20of%20Your%20Life',
+                slug: 'prelude-to-the-rest-of-your-life',
                 length: 234,
                 description:
                     'David Salazar, AnnMarie Buonaspina - violins, Steve Baker - electric guitar, Francisco Salazar - cello',
@@ -512,6 +571,7 @@ export const albums: Album[] = [
                 title: 'Nighthawk',
                 year: 2009,
                 filename: 'senior-recital/Nighthawk',
+                slug: 'nighthawk',
                 length: 321,
                 description: 'Hofstra University Jazz Dectet',
             },
@@ -519,6 +579,7 @@ export const albums: Album[] = [
                 title: 'I Need A Vacation',
                 year: 2009,
                 filename: 'senior-recital/I%20Need%20A%20Vacation',
+                slug: 'i-need-a-vacation',
                 length: 182,
                 description: 'Hofstra University Jazz Dectet',
             },
@@ -537,12 +598,14 @@ export const albums: Album[] = [
                 title: 'Summer in New England',
                 year: 2008,
                 filename: 'hofstra-big-band/Summer%20in%20New%20England',
+                slug: 'summer-in-new-england',
                 length: 239,
             },
             {
                 title: 'Surprise Party',
                 year: 2009,
                 filename: 'hofstra-big-band/Surprise%20Party',
+                slug: 'surprise-party',
                 isMp3: true,
                 length: 370,
                 description:
@@ -571,6 +634,7 @@ export const albums: Album[] = [
                 year: 2009,
                 filename:
                     'superbad-quartet/5-13-09-jam/Have%20You%20Met%20Miss%20Jones',
+                slug: 'have-you-met-miss-jones',
                 length: 544,
             },
             {
@@ -578,12 +642,14 @@ export const albums: Album[] = [
                 year: 2009,
                 filename:
                     'superbad-quartet/5-13-09-jam/Eye%20of%20the%20Hurricane',
+                slug: 'eye-of-the-hurricane',
                 length: 766,
             },
             {
                 title: 'Longing',
                 year: 2009,
                 filename: 'superbad-quartet/5-13-09-jam/Longing',
+                slug: 'longing',
                 length: 577,
             },
         ],
@@ -609,6 +675,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'superbad-quartet/the-departure-of-adam-pin/01%20Speak%20No%20Evil',
+                slug: 'speak-no-evil',
                 length: 576,
             },
             {
@@ -616,6 +683,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'superbad-quartet/the-departure-of-adam-pin/02%20Blue%20In%20Green%20(take%202)',
+                slug: 'blue-in-green-take-2',
                 length: 1281,
             },
             {
@@ -623,6 +691,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'superbad-quartet/the-departure-of-adam-pin/03%20Blue%20In%20Green%20(take%201)',
+                slug: 'blue-in-green-take-1',
                 length: 177,
             },
             {
@@ -630,6 +699,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'superbad-quartet/the-departure-of-adam-pin/04%20Night%20And%20Day%20(take%201)',
+                slug: 'night-and-day-take-1',
                 length: 700,
             },
             {
@@ -637,6 +707,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'superbad-quartet/the-departure-of-adam-pin/05%20Night%20And%20Day%20(take%202)',
+                slug: 'night-and-day-take-2',
                 length: 476,
             },
             {
@@ -644,6 +715,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'superbad-quartet/the-departure-of-adam-pin/06%20Pent-Up%20House',
+                slug: 'pent-up-house',
                 length: 601,
             },
             {
@@ -651,6 +723,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'superbad-quartet/the-departure-of-adam-pin/07%20C-Jam%20Blues',
+                slug: 'c-jam-blues',
                 length: 680,
             },
         ],
@@ -674,6 +747,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio/5-16-08-jam/01%20Nostalgia%20in%20Times%20Square',
+                slug: 'nostalgia-in-times-square',
                 length: 369,
             },
             {
@@ -681,24 +755,28 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio/5-16-08-jam/02%20There%20Is%20No%20Greater%20Love',
+                slug: 'there-is-no-greater-love',
                 length: 484,
             },
             {
                 title: 'Blue Bossa',
                 year: 2008,
                 filename: 'feldergarb-trio/5-16-08-jam/03%20Blue%20Bossa',
+                slug: 'blue-bossa',
                 length: 405,
             },
             {
                 title: 'Pent-Up House',
                 year: 2008,
                 filename: 'feldergarb-trio/5-16-08-jam/04%20Pent-Up%20House',
+                slug: 'pent-up-house',
                 length: 392,
             },
             {
                 title: 'Misty',
                 year: 2008,
                 filename: 'feldergarb-trio/5-16-08-jam/05%20Misty',
+                slug: 'misty',
                 length: 588,
             },
             {
@@ -706,6 +784,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio/5-16-08-jam/06%20Tenor%20Madness%20(take%201)',
+                slug: 'tenor-madnenss-take-1',
                 length: 384,
             },
             {
@@ -713,12 +792,14 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio/5-16-08-jam/07%20Tenor%20Madness%20(take%202)',
+                slug: 'tenor-madness-take-2',
                 length: 254,
             },
             {
                 title: 'Just Friends',
                 year: 2008,
                 filename: 'feldergarb-trio/5-16-08-jam/08%20Just%20Friends',
+                slug: 'just-friends',
                 length: 538,
             },
         ],
@@ -743,6 +824,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio-w-jen-wells/1-28-08-jam/01%20Someday%20My%20Prince%20Will%20Come',
+                slug: 'someday-my-prince-will-come',
                 length: 457,
             },
             {
@@ -750,6 +832,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio-w-jen-wells/1-28-08-jam/02%20Scrapple%20From%20The%20Apple',
+                slug: 'scrapple-from-the-apple',
                 length: 434,
             },
             {
@@ -757,6 +840,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio-w-jen-wells/1-28-08-jam/03%20There%20Is%20No%20Greater%20Love',
+                slug: 'there-is-no-greater-love',
                 length: 431,
             },
             {
@@ -764,6 +848,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio-w-jen-wells/1-28-08-jam/04%20Someday%20My%20Prince%20Will%20Come',
+                slug: 'someday-my-prince-will-come-2',
                 length: 444,
             },
             {
@@ -771,6 +856,7 @@ export const albums: Album[] = [
                 year: 2008,
                 filename:
                     'feldergarb-trio-w-jen-wells/1-28-08-jam/05%20All%20Blues',
+                slug: 'all-blues',
                 length: 1553,
             },
         ],
@@ -794,6 +880,7 @@ export const albums: Album[] = [
                 year: 2007,
                 filename:
                     "feldergarb-trio/10-13-07-jam/01%20Now's%20The%20Time",
+                slug: 'nows-the-time',
                 length: 380,
             },
             {
@@ -801,6 +888,7 @@ export const albums: Album[] = [
                 year: 2007,
                 filename:
                     'feldergarb-trio/10-13-07-jam/02%20Ladybird%20(take%201)',
+                slug: 'ladybird-take-1',
                 length: 263,
             },
             {
@@ -808,6 +896,7 @@ export const albums: Album[] = [
                 year: 2007,
                 filename:
                     'feldergarb-trio/10-13-07-jam/03%20Ladybird%20(take%202)',
+                slug: 'ladybird-take-2',
                 length: 294,
             },
             {
@@ -815,6 +904,7 @@ export const albums: Album[] = [
                 year: 2007,
                 filename:
                     'feldergarb-trio/10-13-07-jam/04%20Take%20The%20A%20Train',
+                slug: 'take-the-a-train',
                 length: 421,
             },
             {
@@ -822,6 +912,7 @@ export const albums: Album[] = [
                 year: 2007,
                 filename:
                     'feldergarb-102trio/10-13-07-jam/05%20Romper%20Stomper',
+                slug: 'romper-stomper',
                 length: 1114,
             },
         ],

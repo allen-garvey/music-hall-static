@@ -16,7 +16,7 @@ if (album) {
     // check track query param
     const trackSlugParam = urlParams.get('track');
     const filteredTracks = album.tracks.filter(
-        track => track.filename === trackSlugParam
+        track => track.slug === trackSlugParam
     );
     if (filteredTracks.length > 0) {
         album.tracks = filteredTracks;
